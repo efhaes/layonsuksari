@@ -3,7 +3,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>{% block title %}Desa Cihowe{% endblock %}</title>
+  <title>{% block title %}Desa Sukasari{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Basic SEO -->
@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
   <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
   <!-- Canonical -->
-  {% if request.get_host == "layoncihowe.techo.id" and request.path == "/" %}
+  {% if request.get_host == "layonsukasari.techo.id" and request.path == "/" %}
     <link rel="canonical" href="https://techo.id/">
   {% else %}
     <link rel="canonical" href="https://{{ request.get_host }}{{ request.path }}">
@@ -22,7 +22,7 @@
 
   <!-- Open Graph / Twitter Card -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{% block og_title %}Desa Cihowe{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}Desa Sukasari{% endblock %}">
   <meta property="og:description" content="Layanan online desa: informasi, pengumuman, dan pengajuan surat masyarakat.">
   <meta property="og:url" content="https://{{ request.get_host }}{{ request.path }}">
   <meta property="og:image" content="{% static 'img/background.png' %}">
@@ -64,13 +64,13 @@
       <!-- Kolom 1: Brand -->
       <div class="footer-brand">
         <div class="footer-brand-heading">
-          <img src="{% static 'img/logo.png' %}" alt="Logo Desa Cihowe" class="footer-logo" />
+          <img src="{% static 'img/logo.png' %}" alt="Logo Desa Sukasari" class="footer-logo" />
           <div>
-            <span class="footer-desa">Desa Cihowe</span>
+            <span class="footer-desa">Desa Sukasari</span>
             <span class="footer-region">Kecamatan Ciseeng</span>
           </div>
         </div>
-        <p class="footer-description">Layanan informasi dan administrasi masyarakat Desa Cihowe yang mudah, cepat, dan transparan.</p>
+        <p class="footer-description">Layanan informasi dan administrasi masyarakat Desa Sukasari yang mudah, cepat, dan transparan.</p>
         <div class="footer-motto"><span></span><i class="bi bi-flower1"></i><span></span></div>
         <p class="footer-tagline">Melayani dengan Hati,<br />Membangun dengan Iman</p>
       </div>
@@ -88,14 +88,14 @@
       <!-- Kolom 4: Kontak -->
       <div class="footer-contact">
         <h5>Hubungi Kami</h5>
-        <p><i class="bi bi-geo-alt"></i> Desa Cihowe, Kec. Ciseeng, Kab. Bogor</p>
+        <p><i class="bi bi-geo-alt"></i> Desa Sukasari, Kec. Ciseeng, Kab. Bogor</p>
         <p><i class="bi bi-clock"></i> Senin - Jumat: 08.00 - 16.00 WIB</p>
       </div>
       
       <!-- Bottom -->
       <div class="footer-bottom">
-        <p>&copy; {% now "Y" %} Pemerintah Desa Cihowe. Hak cipta dilindungi.</p>
-        <p class="footer-credit">Website Pelayanan Desa Cihowe</p>
+        <p>&copy; {% now "Y" %} Pemerintah Desa Sukasari. Hak cipta dilindungi.</p>
+        <p class="footer-credit">Website Pelayanan Desa Sukasari</p>
       </div>
       
     </div>
@@ -117,7 +117,7 @@
         </span>
 
         <div>
-          <strong>Pelayanan Desa Cihowe</strong>
+          <strong>Pelayanan Desa Sukasari</strong>
           <small>Admin pelayanan</small>
         </div>
       </div>
@@ -134,7 +134,7 @@
 
     <div class="wa-service-body">
       <p>Halo 👋</p>
-      <p>Ada yang bisa kami bantu terkait pelayanan Desa Cihowe?</p>
+      <p>Ada yang bisa kami bantu terkait pelayanan Desa Sukasari?</p>
 
       <a
         href="#"
@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   const message =
-    'Halo, saya ingin bertanya mengenai pelayanan Desa Cihowe.';
+    'Halo, saya ingin bertanya mengenai pelayanan Desa Sukasari.';
 
   chatButton.href =
     'https://wa.me/' +
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   const alreadyShown =
-    sessionStorage.getItem('cihoweWhatsappShown') === '1';
+    sessionStorage.getItem('sukasariWhatsappShown') === '1';
 
   if (alreadyShown) {
     waService.classList.add('is-visible');
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
       waService.classList.add('is-visible');
       openPopup();
 
-      sessionStorage.setItem('cihoweWhatsappShown', '1');
+      sessionStorage.setItem('sukasariWhatsappShown', '1');
     }, 20000);
   }
 });

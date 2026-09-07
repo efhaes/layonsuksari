@@ -1,12 +1,12 @@
 /* =========================================================
-   Desa Cihowe — Base (global)
+   Desa Sukasari — Base (global)
    Token warna, reset, navbar, wrapper, footer, AOS.
    Di-load DULUAN lewat base.html, sebelum CSS spesifik halaman
    (home.css, pengumuman.css, dll).
    ========================================================= */
 
 :root {
-  /* --- Identitas Desa Cihowe (ganti per-desa cukup di sini) --- */
+  /* --- Identitas Desa Sukasari (ganti per-desa cukup di sini) --- */
   --primary: #1B4332;      /* hijau hutan tua */
   --secondary: #2D6A4F;    /* hijau medium */
   --accent: #C9A227;       /* emas padi, dipakai terbatas */

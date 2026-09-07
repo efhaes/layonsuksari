@@ -15,7 +15,7 @@ Tentang | Desa
 
 <!-- Hero Section -->
 <section class="hero-section text-center" data-aos="fade-up">
-  <h1>Tentang Desa Cihowe</h1>
+  <h1>Tentang Desa Sukasari</h1>
   <p>Membangun harmoni dan kemajuan bersama demi masa depan yang lebih cerah.</p>
 </section>
 
@@ -59,7 +59,7 @@ Tentang | Desa
               {% endfor %}
             </ul>
           {% else %}
-            <p class="text-muted mb-0">Belum ada poin visi. Tambahkan dari admin.</p>
+            <p class="text-muted mb-0">Belum ada poin visi.</p>
           {% endif %}
         </div>
       </div>
@@ -76,7 +76,7 @@ Tentang | Desa
               {% endfor %}
             </ul>
           {% else %}
-            <p class="text-muted mb-0">Belum ada poin misi. Tambahkan dari admin.</p>
+            <p class="text-muted mb-0">Belum ada poin misi.</p>
           {% endif %}
         </div>
       </div>
@@ -90,368 +90,75 @@ Tentang | Desa
   <div class="section-eyebrow">Perangkat Desa</div>
   <h4 class="struktur-title">Bagan Struktur Organisasi</h4>
   <p class="struktur-subtitle">Pemerintah Desa Cihowe</p>
+  <div class="bagan-mobile-hint d-md-none"><i class="fa-solid fa-arrows-left-right"></i> Geser ke samping untuk melihat struktur lengkap</div>
+  <div class="bagan-scroll" id="baganScroll">
+    <div class="bagan-scale">
+      <div class="bagan-canvas" id="baganCanvas">
+        <svg class="bagan-lines" id="baganLines" aria-hidden="true"></svg>
 
-  <!-- Desktop/tablet: canvas + garis SVG -->
-  <div class="bagan-scroll d-none d-md-block">
-    <div class="bagan-canvas">
+        <div class="bagan-box slot-bpd" id="baganBpd">
+          <div class="bagan-photo">{% if bpd and bpd.foto %}<img src="{{ bpd.foto.url }}" alt="{{ bpd.nama }}">{% else %}<div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>{% endif %}</div>
+          <div class="bagan-info"><span class="bagan-label">B.P.D</span><span class="bagan-nama">{{ bpd.nama|default:"Belum diisi" }}</span></div>
+        </div>
 
-      <svg class="bagan-lines" viewBox="0 0 1180 535" preserveAspectRatio="none">
-        <!-- BPD -> Kepala Desa : Koordinasi -->
-        <polyline points="169,143 234,143" class="garis garis-koordinasi"/>
-        <!-- Kepala Desa -> Sekretaris Desa -->
-        <polyline points="319,225 319,240 625,240" class="garis garis-instruksi"/>
-        <!-- Sekretaris Desa -> Bus Kaur -->
-        <polyline points="715,250 715,295" class="garis garis-instruksi"/>
-        <!-- Bus semua Kaur -->
-        <polyline points="101,295 1069,295" class="garis garis-instruksi"/>
-        <!-- Bus -> Kaur Pemerintahan -->
-        <polyline points="101,295 101,330" class="garis garis-instruksi"/>
-        <!-- Bus -> Kaur Ekbang -->
-        <polyline points="295,295 295,330" class="garis garis-instruksi"/>
-        <!-- Bus -> Kaur Prolap -->
-        <polyline points="488,295 488,330" class="garis garis-instruksi"/>
-        <!-- Bus -> Kaur Kesra -->
-        <polyline points="682,295 682,330" class="garis garis-instruksi"/>
-        <!-- Bus -> Kaur Keuangan -->
-        <polyline points="875,295 875,330" class="garis garis-instruksi"/>
-        <!-- Bus -> Kaur Umum -->
-        <polyline points="1069,295 1069,330" class="garis garis-instruksi"/>
-        <!-- Bus -> Kepala Dusun -->
-        <polyline points="319,225 319,520" class="garis garis-instruksi"/>
+        <div class="bagan-box slot-kepala-desa" id="baganKepalaDesa">
+          <div class="bagan-photo">{% if kepala_desa and kepala_desa.foto %}<img src="{{ kepala_desa.foto.url }}" alt="{{ kepala_desa.nama }}">{% else %}<div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>{% endif %}</div>
+          <div class="bagan-info"><span class="bagan-label">Kepala Desa</span><span class="bagan-nama">{{ kepala_desa.nama|default:"Belum diisi" }}</span></div>
+        </div>
 
-      </svg>
+        <div class="bagan-box slot-sekretaris-desa" id="baganSekretaris">
+          <div class="bagan-photo">{% if sekretaris_desa and sekretaris_desa.foto %}<img src="{{ sekretaris_desa.foto.url }}" alt="{{ sekretaris_desa.nama }}">{% else %}<div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>{% endif %}</div>
+          <div class="bagan-info"><span class="bagan-label">Sekretaris Desa</span><span class="bagan-nama">{{ sekretaris_desa.nama|default:"Belum diisi" }}</span></div>
+        </div>
 
-      <div class="bagan-box slot-bpd">
-        <div class="bagan-photo">
-          {% if bpd and bpd.foto %}
-            <img src="{{ bpd.foto.url }}" alt="{{ bpd.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
+        <div class="bagan-box slot-kasi-pemerintahan bagan-jabatan-bawah">
+          <div class="bagan-photo">{% if kasi_pemerintahan and kasi_pemerintahan.foto %}<img src="{{ kasi_pemerintahan.foto.url }}" alt="{{ kasi_pemerintahan.nama }}">{% else %}<div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>{% endif %}</div>
+          <div class="bagan-info"><span class="bagan-label">Kasi Pemerintahan</span><span class="bagan-nama">{{ kasi_pemerintahan.nama|default:"Belum diisi" }}</span></div>
         </div>
-        <div class="bagan-info">
-          <span class="bagan-label">B.P.D</span>
-          <span class="bagan-nama">{{ bpd.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
 
-      <div class="bagan-box slot-kepala-desa bagan-box-lg">
-        <div class="bagan-photo">
-          {% if kepala_desa and kepala_desa.foto %}
-            <img src="{{ kepala_desa.foto.url }}" alt="{{ kepala_desa.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
+        <div class="bagan-box slot-kasi-kesejahteraan bagan-jabatan-bawah">
+          <div class="bagan-photo">{% if kasi_kesejahteraan and kasi_kesejahteraan.foto %}<img src="{{ kasi_kesejahteraan.foto.url }}" alt="{{ kasi_kesejahteraan.nama }}">{% else %}<div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>{% endif %}</div>
+          <div class="bagan-info"><span class="bagan-label">Kasi Kesejahteraan</span><span class="bagan-nama">{{ kasi_kesejahteraan.nama|default:"Belum diisi" }}</span></div>
         </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kepala Desa</span>
-          <span class="bagan-nama">{{ kepala_desa.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
 
-      <div class="bagan-box slot-sekretaris-desa">
-        <div class="bagan-photo">
-          {% if sekretaris_desa and sekretaris_desa.foto %}
-            <img src="{{ sekretaris_desa.foto.url }}" alt="{{ sekretaris_desa.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
+        <div class="bagan-box slot-kasi-pelayanan bagan-jabatan-bawah">
+          <div class="bagan-photo">{% if kasi_pelayanan and kasi_pelayanan.foto %}<img src="{{ kasi_pelayanan.foto.url }}" alt="{{ kasi_pelayanan.nama }}">{% else %}<div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>{% endif %}</div>
+          <div class="bagan-info"><span class="bagan-label">Kasi Pelayanan</span><span class="bagan-nama">{{ kasi_pelayanan.nama|default:"Belum diisi" }}</span></div>
         </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Sekretaris Desa</span>
-          <span class="bagan-nama">{{ sekretaris_desa.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
 
-      <div class="bagan-box slot-kaur-pemerintahan">
-        <div class="bagan-photo">
-          {% if kasi_pemerintahan and kasi_pemerintahan.foto %}
-            <img src="{{ kasi_pemerintahan.foto.url }}" alt="{{ kasi_pemerintahan.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
+        <div class="bagan-box slot-kaur-tata-usaha bagan-jabatan-bawah">
+          <div class="bagan-photo">{% if kaur_tatausahadannumum and kaur_tatausahadannumum.foto %}<img src="{{ kaur_tatausahadannumum.foto.url }}" alt="{{ kaur_tatausahadannumum.nama }}">{% else %}<div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>{% endif %}</div>
+          <div class="bagan-info"><span class="bagan-label">Kaur Tata Usaha dan Umum</span><span class="bagan-nama">{{ kaur_tatausahadannumum.nama|default:"Belum diisi" }}</span></div>
         </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kasi Pemerintahan</span>
-          <span class="bagan-nama">{{ kasi_pemerintahan.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
 
-      <div class="bagan-box slot-kaur-ekbang">
-        <div class="bagan-photo">
-          {% if kasi_kesejahteraan and kasi_kesejahteraan.foto %}
-            <img src="{{ kasi_kesejahteraan.foto.url }}" alt="{{ kasi_kesejahteraan.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
+        <div class="bagan-box slot-kaur-keuangan bagan-jabatan-bawah">
+          <div class="bagan-photo">{% if kaur_keuangan and kaur_keuangan.foto %}<img src="{{ kaur_keuangan.foto.url }}" alt="{{ kaur_keuangan.nama }}">{% else %}<div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>{% endif %}</div>
+          <div class="bagan-info"><span class="bagan-label">Kaur Keuangan</span><span class="bagan-nama">{{ kaur_keuangan.nama|default:"Belum diisi" }}</span></div>
         </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kasi Kesejahteraan</span>
-          <span class="bagan-nama">{{ kasi_kesejahteraan.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
 
-      <div class="bagan-box slot-kaur-prolap">
-        <div class="bagan-photo">
-          {% if kasi_pelayanan and kasi_pelayanan.foto %}
-            <img src="{{ kasi_pelayanan.foto.url }}" alt="{{ kasi_pelayanan.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
+        <div class="bagan-box slot-kaur-perencanaan bagan-jabatan-bawah">
+          <div class="bagan-photo">{% if kaur_perencanaan and kaur_perencanaan.foto %}<img src="{{ kaur_perencanaan.foto.url }}" alt="{{ kaur_perencanaan.nama }}">{% else %}<div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>{% endif %}</div>
+          <div class="bagan-info"><span class="bagan-label">Kaur Perencanaan</span><span class="bagan-nama">{{ kaur_perencanaan.nama|default:"Belum diisi" }}</span></div>
         </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kasi Pelayanan</span>
-          <span class="bagan-nama">{{ kasi_pelayanan.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
 
-      <div class="bagan-box slot-kaur-kesra">
-        <div class="bagan-photo">
-          {% if kaur_tatausahadannumum and kaur_tatausahadannumum.foto %}
-            <img src="{{ kaur_tatausahadannumum.foto.url }}" alt="{{ kaur_tatausahadannumum.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
-        </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kaur Tata Usaha dan Umum</span>
-          <span class="bagan-nama">{{ kaur_tatausahadannumum.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
-
-      <div class="bagan-box slot-kaur-keuangan">
-        <div class="bagan-photo">
-          {% if kaur_keuangan and kaur_keuangan.foto %}
-            <img src="{{ kaur_keuangan.foto.url }}" alt="{{ kaur_keuangan.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
-        </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kaur Keuangan</span>
-          <span class="bagan-nama">{{ kaur_keuangan.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
-
-      <div class="bagan-box slot-kaur-umum">
-        <div class="bagan-photo">
-          {% if kaur_perencanaan and kaur_perencanaan.foto %}
-            <img src="{{ kaur_perencanaan.foto.url }}" alt="{{ kaur_perencanaan.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
-        </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kaur Perencanaan</span>
-          <span class="bagan-nama">{{ kaur_perencanaan.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
-
-      <div class="dusun-wrap">
-        <svg class="dusun-lines" aria-hidden="true"></svg>
-        <div class="dusun-group">
-          {% for s in kepala_wilayah %}
+        <div class="dusun-section">
+          <div class="dusun-group" id="dusunGroup">
+            {% for s in kepala_wilayah %}
             <div class="bagan-box slot-kepala-dusun">
-              <div class="bagan-photo">
-                {% if s.foto %}
-                  <img src="{{ s.foto.url }}" alt="{{ s.nama }}">
-                {% else %}
-                  <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-                {% endif %}
-              </div>
-              <div class="bagan-info">
-                <span class="bagan-label">Kepala Dusun {{ forloop.counter }}</span>
-                <span class="bagan-nama">{{ s.nama }}</span>
-              </div>
+              <div class="bagan-photo">{% if s.foto %}<img src="{{ s.foto.url }}" alt="{{ s.nama }}">{% else %}<div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>{% endif %}</div>
+              <div class="bagan-info"><span class="bagan-label">Kepala Dusun {{ forloop.counter }}</span><span class="bagan-nama">{{ s.nama }}</span></div>
             </div>
-          {% empty %}
+            {% empty %}
             <div class="bagan-box slot-kepala-dusun">
-              <div class="bagan-info">
-                <span class="bagan-label">Kepala Dusun</span>
-                <span class="bagan-nama bagan-nama-muted">Belum diisi</span>
-              </div>
+              <div class="bagan-photo"><div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div></div>
+              <div class="bagan-info"><span class="bagan-label">Kepala Dusun</span><span class="bagan-nama bagan-nama-muted">Belum diisi</span></div>
             </div>
-          {% endfor %}
+            {% endfor %}
+          </div>
         </div>
       </div>
-
     </div>
-
   </div>
-
-  <!-- Mobile: tree vertikal, tanpa geser -->
-  <div class="bagan-tree d-md-none">
-
-    <!-- BPD (koordinasi) + Kepala Desa -->
-    <div class="bagan-tree-row">
-      <div class="bagan-m-box bagan-m-bpd">
-        <div class="bagan-photo">
-          {% if bpd and bpd.foto %}
-            <img src="{{ bpd.foto.url }}" alt="{{ bpd.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
-        </div>
-        <div class="bagan-info">
-          <span class="bagan-label">B.P.D</span>
-          <span class="bagan-nama">{{ bpd.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
-
-      <div class="bagan-tree-dash" aria-hidden="true"></div>
-
-      <div class="bagan-m-box bagan-m-kepala">
-        <div class="bagan-photo">
-          {% if kepala_desa and kepala_desa.foto %}
-            <img src="{{ kepala_desa.foto.url }}" alt="{{ kepala_desa.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
-        </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kepala Desa</span>
-          <span class="bagan-nama">{{ kepala_desa.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="bagan-tree-connector"></div>
-
-    <!-- Sekretaris Desa -->
-    <div class="bagan-tree-row">
-      <div class="bagan-m-box bagan-m-sekretaris">
-        <div class="bagan-photo">
-          {% if sekretaris_desa and sekretaris_desa.foto %}
-            <img src="{{ sekretaris_desa.foto.url }}" alt="{{ sekretaris_desa.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
-        </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Sekretaris Desa</span>
-          <span class="bagan-nama">{{ sekretaris_desa.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="bagan-tree-connector"></div>
-
-    <!-- 6 Kaur — grid 2 kolom -->
-    <div class="bagan-tree-grid">
-
-      <div class="bagan-m-box">
-        <div class="bagan-photo">
-          {% if kasi_pemerintahan and kasi_pemerintahan.foto %}
-            <img src="{{ kasi_pemerintahan.foto.url }}" alt="{{ kasi_pemerintahan.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
-        </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kasi Pemerintahan</span>
-          <span class="bagan-nama">{{ kasi_pemerintahan.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
-
-      <div class="bagan-m-box">
-        <div class="bagan-photo">
-          {% if kasi_kesejahteraan and kasi_kesejahteraan.foto %}
-            <img src="{{ kasi_kesejahteraan.foto.url }}" alt="{{ kasi_kesejahteraan.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
-        </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kasi Kesejahteraan</span>
-          <span class="bagan-nama">{{ kasi_kesejahteraan.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
-
-      <div class="bagan-m-box">
-        <div class="bagan-photo">
-          {% if kasi_pelayanan and kasi_pelayanan.foto %}
-            <img src="{{ kasi_pelayanan.foto.url }}" alt="{{ kasi_pelayanan.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
-        </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kasi Pelayanan</span>
-          <span class="bagan-nama">{{ kasi_pelayanan.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
-
-      <div class="bagan-m-box">
-        <div class="bagan-photo">
-          {% if kaur_tatausahadannumum and kaur_tatausahadannumum.foto %}
-            <img src="{{ kaur_tatausahadannumum.foto.url }}" alt="{{ kaur_tatausahadannumum.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
-        </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kaur Tata Usaha dan Umum</span>
-          <span class="bagan-nama">{{ kaur_tatausahadannumum.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
-
-      <div class="bagan-m-box">
-        <div class="bagan-photo">
-          {% if kaur_keuangan and kaur_keuangan.foto %}
-            <img src="{{ kaur_keuangan.foto.url }}" alt="{{ kaur_keuangan.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
-        </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kaur Keuangan</span>
-          <span class="bagan-nama">{{ kaur_keuangan.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
-
-      <div class="bagan-m-box">
-        <div class="bagan-photo">
-          {% if kaur_perencanaan and kaur_perencanaan.foto %}
-            <img src="{{ kaur_perencanaan.foto.url }}" alt="{{ kaur_perencanaan.nama }}">
-          {% else %}
-            <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-          {% endif %}
-        </div>
-        <div class="bagan-info">
-          <span class="bagan-label">Kaur Perencanaan</span>
-          <span class="bagan-nama">{{ kaur_perencanaan.nama|default:"Belum diisi" }}</span>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="bagan-tree-connector"></div>
-
-    <!-- Kepala Dusun — dinamis, grid 2 kolom -->
-    <div class="bagan-tree-grid">
-      {% for s in kepala_wilayah %}
-        <div class="bagan-m-box">
-          <div class="bagan-photo">
-            {% if s.foto %}
-              <img src="{{ s.foto.url }}" alt="{{ s.nama }}">
-            {% else %}
-              <div class="bagan-photo-empty"><i class="fa-solid fa-user"></i></div>
-            {% endif %}
-          </div>
-          <div class="bagan-info">
-            <span class="bagan-label">Kepala Dusun {{ forloop.counter }}</span>
-            <span class="bagan-nama">{{ s.nama }}</span>
-          </div>
-        </div>
-      {% empty %}
-        <div class="bagan-m-box bagan-m-group">
-          <span class="bagan-label">Kepala Dusun</span>
-          <span class="bagan-nama bagan-nama-muted">Belum diisi</span>
-        </div>
-      {% endfor %}
-    </div>
-
-  </div><!-- /.bagan-tree -->
 </section>
 
 <!-- Lokasi -->
@@ -472,7 +179,7 @@ Tentang | Desa
     <a href="{{ tentang.lokasi_embed_url }}" target="_blank" rel="noopener" class="lokasi-card" style="text-decoration:none;">
       <div class="lokasi-icon"><i class="fa-solid fa-location-dot"></i></div>
       <div class="lokasi-text">
-        <strong>Kantor Desa Cihowe</strong>
+        <strong>Kantor Desa Sukasari</strong>
         <span>Lihat lokasi &amp; rute menuju kantor desa</span>
       </div>
       <span class="lokasi-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Maps</span>
@@ -486,7 +193,9 @@ Tentang | Desa
 
 {% block javascripts %}
 <script>
-  (function () {
+(function () {
+  const NS = 'http://www.w3.org/2000/svg';
+
   function debounce(fn, wait) {
     let t;
     return function (...args) {
@@ -495,74 +204,254 @@ Tentang | Desa
     };
   }
 
-  function drawDusunLines() {
-    const wrap = document.querySelector('.dusun-wrap');
-    const group = document.querySelector('.dusun-group');
-    const svg = document.querySelector('.dusun-lines');
-    if (!wrap || !group || !svg) return;
-
-    const boxes = group.querySelectorAll(':scope > .bagan-box');
-    if (!boxes.length) return;
-
-    const wrapRect = wrap.getBoundingClientRect();
-    const width = wrapRect.width;
-    const height = wrapRect.height;
-    if (width === 0 || height === 0) return;
-
-    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-    svg.setAttribute('width', width);
-    svg.setAttribute('height', height);
-
-    // titik sumber garis (nyambung dari trunk utama Kepala Desa, sejajar 27% lebar canvas)
-    const sourceX = width * 0.27;
-    const busY = 26;   // sama dengan padding-top .dusun-group
-    const dropLen = 14;
-
-    const xs = [];
-    let branches = '';
-
-    boxes.forEach((box) => {
-      const boxRect = box.getBoundingClientRect();
-      const cx = (boxRect.left - wrapRect.left) + boxRect.width / 2;
-      xs.push(cx);
-      branches += `<line x1="${cx}" y1="${busY}" x2="${cx}" y2="${busY + dropLen}" class="garis garis-instruksi"/>`;
-    });
-
-    const minX = Math.min(sourceX, ...xs);
-    const maxX = Math.max(sourceX, ...xs);
-
-    const svgContent =
-      `<line x1="${sourceX}" y1="0" x2="${sourceX}" y2="${busY}" class="garis garis-instruksi"/>` +
-      `<line x1="${minX}" y1="${busY}" x2="${maxX}" y2="${busY}" class="garis garis-instruksi"/>` +
-      branches;
-
-    svg.innerHTML = svgContent;
+  function createLine(svg, x1, y1, x2, y2, className) {
+    const line = document.createElementNS(NS, 'line');
+    line.setAttribute('x1', x1);
+    line.setAttribute('y1', y1);
+    line.setAttribute('x2', x2);
+    line.setAttribute('y2', y2);
+    line.setAttribute('class', className);
+    svg.appendChild(line);
   }
 
-  function initDusunLines() {
-    drawDusunLines();
+  function createPolyline(svg, points, className) {
+    const polyline = document.createElementNS(NS, 'polyline');
+    polyline.setAttribute('points', points.map((point) => `${point.x},${point.y}`).join(' '));
+    polyline.setAttribute('class', className);
+    svg.appendChild(polyline);
+  }
 
-    window.addEventListener('resize', debounce(drawDusunLines, 150));
-    window.addEventListener('load', drawDusunLines);
+  function getBoxPosition(element, canvas) {
+    const elementRect = element.getBoundingClientRect();
+    const canvasRect = canvas.getBoundingClientRect();
 
-    if (window.ResizeObserver) {
-      const wrap = document.querySelector('.dusun-wrap');
-      if (wrap) {
-        const ro = new ResizeObserver(debounce(drawDusunLines, 100));
-        ro.observe(wrap);
-      }
+    const scaleX = canvasRect.width / canvas.offsetWidth;
+    const scaleY = canvasRect.height / canvas.offsetHeight;
+
+    const left = (elementRect.left - canvasRect.left) / scaleX;
+    const top = (elementRect.top - canvasRect.top) / scaleY;
+    const width = elementRect.width / scaleX;
+    const height = elementRect.height / scaleY;
+
+    return {
+      left: left,
+      right: left + width,
+      top: top,
+      bottom: top + height,
+      centerX: left + (width / 2),
+      centerY: top + (height / 2),
+      width: width,
+      height: height
+    };
+  }
+
+  function drawOrganizationLines() {
+    const canvas = document.getElementById('baganCanvas');
+    const svg = document.getElementById('baganLines');
+    const bpd = document.getElementById('baganBpd');
+    const kepala = document.getElementById('baganKepalaDesa');
+    const sekretaris = document.getElementById('baganSekretaris');
+
+    if (!canvas || !svg || !bpd || !kepala || !sekretaris) return;
+
+    svg.innerHTML = '';
+    svg.setAttribute('viewBox', `0 0 ${canvas.offsetWidth} ${canvas.offsetHeight}`);
+    svg.setAttribute('preserveAspectRatio', 'none');
+
+    const posBpd = getBoxPosition(bpd, canvas);
+    const posKepala = getBoxPosition(kepala, canvas);
+    const posSekretaris = getBoxPosition(sekretaris, canvas);
+
+    /* ===== BPD → Kepala Desa ===== */
+    const koordinasiMiddleX = (posBpd.right + posKepala.left) / 2;
+
+    createPolyline(svg, [
+      { x: posBpd.right, y: posBpd.centerY },
+      { x: koordinasiMiddleX, y: posBpd.centerY },
+      { x: koordinasiMiddleX, y: posKepala.centerY },
+      { x: posKepala.left, y: posKepala.centerY }
+    ], 'garis garis-koordinasi');
+
+    /* ===== Kepala Desa → Sekretaris Desa ===== */
+    const kepalaSekretarisMiddleX = (posKepala.right + posSekretaris.left) / 2;
+
+    createPolyline(svg, [
+      { x: posKepala.right, y: posKepala.centerY },
+      { x: kepalaSekretarisMiddleX, y: posKepala.centerY },
+      { x: kepalaSekretarisMiddleX, y: posSekretaris.centerY },
+      { x: posSekretaris.left, y: posSekretaris.centerY }
+    ], 'garis garis-instruksi');
+
+    /* ===== Sekretaris → Kasi & Kaur ===== */
+    const jabatanBawah = Array.from(
+      canvas.querySelectorAll('.bagan-jabatan-bawah')
+    ).map((element) => getBoxPosition(element, canvas));
+
+    if (jabatanBawah.length) {
+      const firstTop = Math.min(...jabatanBawah.map((position) => position.top));
+      const busY = firstTop - 38;
+      const firstX = jabatanBawah[0].centerX;
+      const lastX = jabatanBawah[jabatanBawah.length - 1].centerX;
+
+      createLine(
+        svg,
+        posSekretaris.centerX,
+        posSekretaris.bottom,
+        posSekretaris.centerX,
+        busY,
+        'garis garis-instruksi'
+      );
+
+      createLine(
+        svg,
+        firstX,
+        busY,
+        lastX,
+        busY,
+        'garis garis-instruksi'
+      );
+
+      jabatanBawah.forEach((position) => {
+        createLine(
+          svg,
+          position.centerX,
+          busY,
+          position.centerX,
+          position.top,
+          'garis garis-instruksi'
+        );
+      });
     }
 
-    // jaga-jaga kalau foto lambat load dan geser tinggi box
-    document.querySelectorAll('.dusun-group img').forEach((img) => {
-      img.addEventListener('load', drawDusunLines);
+    /* ===== Kepala Desa → Kepala Dusun ===== */
+    const dusunBoxes = Array.from(
+      canvas.querySelectorAll('.dusun-group > .bagan-box')
+    ).map((element) => getBoxPosition(element, canvas));
+
+    if (dusunBoxes.length) {
+      const firstDusunTop = Math.min(...dusunBoxes.map((position) => position.top));
+      const busY = firstDusunTop - 22;
+      const dusunXs = dusunBoxes.map((position) => position.centerX);
+      const minX = Math.min(...dusunXs);
+      const maxX = Math.max(...dusunXs);
+
+      /*
+       * Trunk utama dari Kepala Desa turun sampai bus Kepala Dusun.
+       */
+      createLine(
+        svg,
+        posKepala.centerX,
+        posKepala.bottom,
+        posKepala.centerX,
+        busY,
+        'garis garis-instruksi'
+      );
+
+      /*
+       * Hubungkan trunk Kepala Desa ke bus dusun bila pusat Kepala Desa
+       * berada di luar area kelompok Kepala Dusun.
+       */
+      if (posKepala.centerX < minX) {
+        createLine(
+          svg,
+          posKepala.centerX,
+          busY,
+          maxX,
+          busY,
+          'garis garis-instruksi'
+        );
+      } else if (posKepala.centerX > maxX) {
+        createLine(
+          svg,
+          minX,
+          busY,
+          posKepala.centerX,
+          busY,
+          'garis garis-instruksi'
+        );
+      } else {
+        createLine(
+          svg,
+          minX,
+          busY,
+          maxX,
+          busY,
+          'garis garis-instruksi'
+        );
+      }
+
+      dusunBoxes.forEach((position) => {
+        createLine(
+          svg,
+          position.centerX,
+          busY,
+          position.centerX,
+          position.top,
+          'garis garis-instruksi'
+        );
+      });
+    }
+  }
+
+  function centerMobileOnKepalaDesa() {
+    if (window.innerWidth > 768) return;
+
+    const scroll = document.getElementById('baganScroll');
+    const kepala = document.getElementById('baganKepalaDesa');
+
+    if (!scroll || !kepala) return;
+
+    requestAnimationFrame(() => {
+      const scrollRect = scroll.getBoundingClientRect();
+      const kepalaRect = kepala.getBoundingClientRect();
+
+      const kepalaCenter =
+        kepalaRect.left -
+        scrollRect.left +
+        scroll.scrollLeft +
+        (kepalaRect.width / 2);
+
+      const target = kepalaCenter - (scroll.clientWidth / 2);
+      scroll.scrollLeft = Math.max(target, 0);
     });
+  }
+
+  function initOrganizationChart() {
+    drawOrganizationLines();
+
+    requestAnimationFrame(() => {
+      drawOrganizationLines();
+      centerMobileOnKepalaDesa();
+    });
+
+    window.addEventListener('resize', debounce(() => {
+      drawOrganizationLines();
+    }, 150));
+
+    window.addEventListener('load', () => {
+      drawOrganizationLines();
+      centerMobileOnKepalaDesa();
+    });
+
+    document.querySelectorAll('#baganCanvas img').forEach((img) => {
+      img.addEventListener('load', drawOrganizationLines);
+    });
+
+    if (window.ResizeObserver) {
+      const canvas = document.getElementById('baganCanvas');
+
+      if (canvas) {
+        const observer = new ResizeObserver(debounce(drawOrganizationLines, 100));
+        observer.observe(canvas);
+      }
+    }
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initDusunLines);
+    document.addEventListener('DOMContentLoaded', initOrganizationChart);
   } else {
-    initDusunLines();
+    initOrganizationChart();
   }
 })();
+</script>
 {% endblock %}

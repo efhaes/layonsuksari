@@ -32,7 +32,7 @@ def file_upload(name="dokumen.pdf", content=b"%PDF-1.4 test"):
     return SimpleUploadedFile(name, content, content_type="application/pdf")
 
 
-@override_settings(MEDIA_ROOT=tempfile.mkdtemp(prefix="cihowe-test-media-"))
+@override_settings(MEDIA_ROOT=tempfile.mkdtemp(prefix="sukasari-test-media-"))
 class PengajuanTests(TestCase):
     @classmethod
     def setUpTestData(cls):

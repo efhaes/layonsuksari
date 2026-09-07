@@ -23,10 +23,10 @@ CSRF_TRUSTED_ORIGINS = [
     # HTTP (sebelum HTTPS aktif)
     "http://168.231.123.63",
     "http://techo.id", "http://www.techo.id",
-    "http://layoncihowe.techo.id",
+    "http://layonsukasari.techo.id",
     # HTTPS (setelah TLS)
     "https://techo.id", "https://www.techo.id",
-    "https://layoncihowe.techo.id",
+    "https://layonsukasari.techo.id",
 ]
 
 # ===== Aplikasi

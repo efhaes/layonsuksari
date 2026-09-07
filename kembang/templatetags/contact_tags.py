@@ -27,7 +27,7 @@ def whatsapp_message(obj, jenis_surat):
     status_label = obj.get_status_display()
     message = (
         f"Halo Bapak/Ibu {nama},\n\n"
-        f"Kami dari Kantor Desa Cihowe ingin menghubungi Anda terkait pengajuan {jenis_surat}.\n\n"
+        f"Kami dari Kantor Desa Sukasari ingin menghubungi Anda terkait pengajuan {jenis_surat}.\n\n"
         f"Status pengajuan saat ini: {status_label}.\n"
     )
     if obj.status == "ditolak":

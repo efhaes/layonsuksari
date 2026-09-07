@@ -23,7 +23,7 @@ Dashboard
 
   <div class="hero-grid">
     <div class="hero-content">
-      <span class="hero-badge"><span class="dot"></span>Layanan Online Desa Cihowe</span>
+      <span class="hero-badge"><span class="dot"></span>Layanan Online Desa Sukasari</span>
       <h1>Pelayanan Desa<br>Mudah, Cepat, Transparan</h1>
       <p class="hero-desc">Nikmati berbagai layanan administrasi desa secara online kapan saja dan di mana saja tanpa antre.</p>
 
@@ -60,20 +60,26 @@ Dashboard
         {% endif %}
       </div>
 
-      <div class="announcement-card">
-        <div class="ann-head">
-          <strong><i class="fa-solid fa-bell" style="color: var(--accent);"></i> Pengumuman Terbaru</strong>
-          <a href="{% url 'announcement_page' %}">Lihat Semua</a>
+        <div class="announcement-card">
+            <div class="ann-head">
+              <strong><i class="fa-solid fa-bell" style="color: var(--accent);"></i> Pengumuman Terbaru</strong>
+              <a href="{% url 'announcement_page' %}">Lihat Semua</a>
+            </div>
+            {% for announcement in announcements %}
+            <div class="ann-item">
+              <span class="ann-icon"><i class="fa-solid fa-bullhorn"></i></span>
+              <div>
+                <p>{{ announcement.title }}</p>
+                <small>{{ announcement.published_at|date:"d F Y" }}</small>
+              </div>
+            </div>
+            {% empty %}
+            <div class="ann-empty">
+              <i class="fa-regular fa-bell-slash"></i>
+              <p>Belum ada pengumuman terbaru.</p>
+            </div>
+            {% endfor %}
         </div>
-        <div class="ann-item">
-          <span class="ann-icon"><i class="fa-solid fa-users"></i></span>
-          <div><p>Musyawarah Desa Tahun 2025</p><small>18 Mei 2025</small></div>
-        </div>
-        <div class="ann-item">
-          <span class="ann-icon"><i class="fa-solid fa-hand-holding-dollar"></i></span>
-          <div><p>Penyaluran Bantuan Sosial Tahap 2</p><small>15 Mei 2025</small></div>
-        </div>
-      </div>
     </div>
   </div>
 

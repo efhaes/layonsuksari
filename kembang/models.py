@@ -128,7 +128,7 @@ class TentangDesa(models.Model):
         verbose_name_plural = "Tentang Desa"
 
     def __str__(self):
-        return "Tentang Desa Cihowe"
+        return "Tentang Desa Sukasari"
 
     def save(self, *args, **kwargs):
         self.pk = 1  # singleton
@@ -236,7 +236,7 @@ class ProfilDesa(models.Model):
         verbose_name_plural = "Foto Kantor Desa"
 
     def __str__(self):
-        return "Foto Kantor Desa Cihowe"
+        return "Foto Kantor Desa Sukasari"
 
     def save(self, *args, **kwargs):
         self.pk = 1

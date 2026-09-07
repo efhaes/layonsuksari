@@ -1,5 +1,5 @@
 /* =========================================================
-   Desa Cihowe — Tentang Desa
+   Desa Sukasari — Tentang Desa
    Diselaraskan ke design system "Gov Clean" di base.css + home.css.
    Wajib load base.css & home.css duluan (token, navbar, footer, AOS).
    ========================================================= */
@@ -150,7 +150,9 @@
 /* =========================================================
    BAGAN STRUKTUR ORGANISASI — COMPACT DESKTOP
 ========================================================= */
-
+/* =========================================================
+   STRUKTUR ORGANISASI
+========================================================= */
 #struktur-organisasi {
   max-width: 1240px;
   padding-top: 3rem;
@@ -158,54 +160,93 @@
 }
 
 .struktur-title {
+  margin: 0 0 0.25rem;
   color: var(--primary);
+  font-size: 1.45rem;
   font-weight: 800;
   text-align: center;
-  margin: 0 0 0.25rem;
 }
 
 .struktur-subtitle {
+  margin: 0 0 1.5rem;
   color: var(--text-muted);
-  text-align: center;
   font-size: 0.9rem;
-  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
+/* ===== Mobile Hint ===== */
+.bagan-mobile-hint {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 0.85rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.bagan-mobile-hint i {
+  margin-right: 0.3rem;
+}
+
+/* ===== Scroll Wrapper ===== */
 .bagan-scroll {
   width: 100%;
-  overflow: visible;
-  padding: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(27, 94, 69, 0.35) transparent;
 }
 
+.bagan-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.bagan-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bagan-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(27, 94, 69, 0.3);
+}
+
+/* ===== Canvas ===== */
 .bagan-canvas {
   position: relative;
-  width: 100%;
-  max-width: 1180px;
-  min-height: 525px; /* baris Kaur berakhir di y=525 */
-  height: auto; /* melar otomatis ngikutin jumlah Kepala Dusun */
+  width: 1180px;
+  min-width: 1180px;
+  min-height: 790px;
   margin: 0 auto;
   background: #fbfcfb;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  overflow: hidden; /* jaga border-radius pas konten melar */
+  overflow: hidden;
 }
 
+/* ===== Garis Struktur ===== */
 .bagan-lines {
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 550px;
-  pointer-events: none;
+  height: 100%;
   z-index: 1;
+  pointer-events: none;
+  overflow: visible;
 }
 
 .garis {
   fill: none;
   stroke: var(--primary);
-  stroke-width: 1.8;
+  stroke-width: 2;
   stroke-linecap: square;
   stroke-linejoin: miter;
+  vector-effect: non-scaling-stroke;
 }
 
 .garis-instruksi {
@@ -213,17 +254,12 @@
 }
 
 .garis-koordinasi {
-  stroke: #65776d;
-  stroke-width: 1.6;
+  stroke: #6d7e75;
+  stroke-width: 1.8;
   stroke-dasharray: 7 6;
 }
 
-.bagan-box {
-  z-index: 2;
-}
-
-/* ===== CARD ===== */
-
+/* ===== Card Jabatan ===== */
 .bagan-box {
   position: absolute;
   display: flex;
@@ -235,51 +271,53 @@
   box-shadow: 0 3px 10px rgba(27, 67, 50, 0.08);
   text-align: center;
   z-index: 2;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .bagan-box:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  border-color: rgba(27, 94, 69, 0.35);
+  box-shadow: 0 8px 18px rgba(27, 67, 50, 0.12);
 }
 
-/* ===== FOTO ===== */
-
+/* ===== Foto ===== */
 .bagan-photo {
   width: 100%;
   height: 110px;
+  flex-shrink: 0;
   overflow: hidden;
   background: #e8f0eb;
 }
 
 .bagan-photo img {
+  display: block;
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
   object-position: center 18%;
 }
 
 .bagan-photo-empty {
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(145deg, #f1f6f3, #e1ebe5);
-  color: rgba(27, 67, 50, 0.35);
-  font-size: 2.4rem;
+  color: rgba(27, 67, 50, 0.34);
+  font-size: 2.35rem;
 }
 
-/* ===== INFO ===== */
-
+/* ===== Informasi Jabatan ===== */
 .bagan-info {
   position: relative;
-  min-height: 58px;
-  padding: 0.65rem 0.4rem 0.55rem;
   display: flex;
+  flex: 1;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  min-height: 60px;
+  padding: 0.65rem 0.45rem 0.55rem;
   background: var(--card);
 }
 
@@ -299,7 +337,7 @@
   color: var(--primary);
   font-size: 0.68rem;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.22;
   text-transform: uppercase;
 }
 
@@ -309,7 +347,7 @@
   color: var(--text);
   font-size: 0.62rem;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .bagan-nama-muted {
@@ -318,19 +356,26 @@
   font-style: italic;
 }
 
-/* ===== KEPALA DESA ===== */
+/* ===== BPD ===== */
+.slot-bpd {
+  left: 40px;
+  top: 60px;
+  width: 145px;
+  height: 175px;
+  border-color: rgba(201, 162, 39, 0.7);
+}
 
+.slot-bpd .bagan-photo {
+  height: 112px;
+}
+
+/* ===== Kepala Desa ===== */
 .slot-kepala-desa {
-  left: 27%;
+  left: 235px;
   top: 25px;
   width: 170px;
   height: 200px;
-  transform: translateX(-50%);
   border: 2px solid var(--primary);
-}
-
-.slot-kepala-desa:hover {
-  transform: translateX(-50%) translateY(-3px);
 }
 
 .slot-kepala-desa .bagan-photo {
@@ -342,34 +387,23 @@
   background: var(--primary);
 }
 
+.slot-kepala-desa .bagan-info::before {
+  background: rgba(255, 255, 255, 0.45);
+}
+
 .slot-kepala-desa .bagan-label {
   color: var(--white);
   font-size: 0.76rem;
 }
 
 .slot-kepala-desa .bagan-nama {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.86);
 }
 
-/* ===== BPD ===== */
-
-.slot-bpd {
-  left: 3%;
-  top: 55px;
-  width: 145px;
-  height: 175px;
-  border-color: rgba(201, 162, 39, 0.7);
-}
-
-.slot-bpd .bagan-photo {
-  height: 112px;
-}
-
-/* ===== SEKRETARIS ===== */
-
+/* ===== Sekretaris Desa ===== */
 .slot-sekretaris-desa {
-  left: 53%;
-  top: 70px;
+  left: 625px;
+  top: 65px;
   width: 180px;
   height: 180px;
   border-color: rgba(45, 106, 79, 0.45);
@@ -379,118 +413,157 @@
   height: 115px;
 }
 
-
-.slot-kaur-pemerintahan,
-.slot-kaur-ekbang,
-.slot-kaur-prolap,
-.slot-kaur-kesra,
-.slot-kaur-keuangan,
-.slot-kaur-umum {
+/* ===== Baris Kasi & Kaur ===== */
+.bagan-jabatan-bawah {
   top: 330px;
-  width: 14%;
-  max-width: 155px;
+  width: 160px;
   height: 175px;
 }
 
-.slot-kaur-pemerintahan { left: 2%; }
-.slot-kaur-ekbang       { left: 18.4%; }
-.slot-kaur-prolap       { left: 34.8%; }
-.slot-kaur-kesra        { left: 51.2%; }
-.slot-kaur-keuangan     { left: 67.6%; }
-.slot-kaur-umum         { left: 84%; }
-
-.slot-kaur-pemerintahan .bagan-photo,
-.slot-kaur-ekbang .bagan-photo,
-.slot-kaur-prolap .bagan-photo,
-.slot-kaur-kesra .bagan-photo,
-.slot-kaur-keuangan .bagan-photo,
-.slot-kaur-umum .bagan-photo {
+.bagan-jabatan-bawah .bagan-photo {
   height: 112px;
 }
 
-/* ===== BAWAH ===== */
-
-.bagan-box-group {
-  min-height: 75px;
-  padding: 0.75rem;
-  justify-content: center;
-  background: #f7faf8;
+.slot-kasi-pemerintahan {
+  left: 20px;
 }
 
-.bagan-box-group .bagan-label {
-  font-size: 0.7rem;
-}
-.dusun-wrap {
-  position: relative;
-  margin-top: 530px;
-  padding-bottom: 28px;
-
-  overflow-x: auto;
-  overflow-y: visible;
+.slot-kasi-kesejahteraan {
+  left: 215px;
 }
 
-.dusun-lines {
+.slot-kasi-pelayanan {
+  left: 410px;
+}
+
+.slot-kaur-tata-usaha {
+  left: 605px;
+}
+
+.slot-kaur-keuangan {
+  left: 800px;
+}
+
+.slot-kaur-perencanaan {
+  left: 995px;
+}
+
+/* ===== Kepala Dusun ===== */
+.dusun-section {
   position: absolute;
-  top: 0;
+  top: 565px;
   left: 0;
-  z-index: 1;
-  pointer-events: none;
-  overflow: visible;
+  right: 0;
+  padding: 40px 35px 35px;
 }
 
 .dusun-group {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  gap: 20px;
-  width: max-content;
-  min-width: 100%;
-  margin: 0 auto;
-  padding-top: 37px;
-  box-sizing: border-box;
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 28px;
+  width: 100%;
   z-index: 2;
 }
 
 .dusun-group .bagan-box {
   position: relative;
+  top: auto;
+  left: auto;
   width: 170px;
-  flex-shrink: 0;
+  height: 175px;
+  flex: 0 0 170px;
 }
 
+.dusun-group .bagan-box:hover {
+  transform: translateY(-3px);
+}
 
-/* ===== LAPTOP KECIL ===== */
+.dusun-group .bagan-photo {
+  height: 112px;
+}
 
-@media (max-width: 1200px) {
+/* ===== Desktop ===== */
+@media (min-width: 1240px) {
+  .bagan-scroll {
+    overflow-x: visible;
+  }
+}
+
+/* ===== Laptop / Tablet ===== */
+@media (max-width: 1239px) {
   #struktur-organisasi {
     max-width: 100%;
   }
 
-  .bagan-canvas {
-    border-left: 0;
-    border-right: 0;
-    border-radius: 0;
-  }
-
-  .bagan-label {
-    font-size: 0.62rem;
-  }
-
-  .bagan-nama {
-    font-size: 0.58rem;
+  .bagan-scroll {
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
 
-/* ===== MOBILE (base — horizontal scroll canvas) ===== */
+/* ===== Scale Wrapper ===== */
+.bagan-scale {
+  width: 1180px;
+}
 
+/* ===== Mobile ===== */
 @media (max-width: 768px) {
+  #struktur-organisasi {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .struktur-title {
+    font-size: 1.25rem;
+  }
+
+  .struktur-subtitle {
+    margin-bottom: 0.8rem;
+    font-size: 0.82rem;
+  }
+
   .bagan-scroll {
+    width: calc(100% + 24px);
+    margin-left: -12px;
+    padding: 0 12px 10px;
     overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  .bagan-scale {
+    width: max-content;
   }
 
   .bagan-canvas {
-    width: 1100px;
-    min-width: 1100px;
+    width: 1180px;
+    min-width: 1180px;
+    min-height: 790px;
+    margin: 0;
+    zoom: 0.72;
+  }
+}
+
+/* ===== Mobile Kecil ===== */
+@media (max-width: 430px) {
+  .bagan-canvas {
+    zoom: 0.68;
+  }
+}
+
+@media (max-width: 375px) {
+  .bagan-canvas {
+    zoom: 0.64;
+  }
+}
+
+/* ===== Mobile Kecil ===== */
+@media (max-width: 400px) {
+  .bagan-mobile-hint {
+    font-size: 0.7rem;
   }
 }
 

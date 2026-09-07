@@ -8,7 +8,7 @@ from django.urls import reverse
 from kembang.models import SKTMPengajuan, SuratKelahiran
 
 
-@override_settings(MEDIA_ROOT=tempfile.mkdtemp(prefix="cihowe-upload-test-"))
+@override_settings(MEDIA_ROOT=tempfile.mkdtemp(prefix="sukasari-upload-test-"))
 class UploadSecurityTests(TestCase):
     @classmethod
     def setUpTestData(cls):

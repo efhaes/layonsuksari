@@ -8,7 +8,7 @@ from django.urls import reverse
 from kembang.models import SuratKelahiran
 
 
-@override_settings(MEDIA_ROOT=tempfile.mkdtemp(prefix="cihowe-private-media-"))
+@override_settings(MEDIA_ROOT=tempfile.mkdtemp(prefix="sukasari-private-media-"))
 class ProtectedMediaTests(TestCase):
     @classmethod
     def setUpTestData(cls):
